@@ -38,8 +38,8 @@ local
 	input,
 	internetExecute =
 
-	"MineOS EFI",
-	"Change label",
+	"MacOS UEFI",
+	"Set label",
 	"key_down",
 	"component_added",
 	"filesystem",
@@ -193,7 +193,7 @@ function(proxy)
 		OS = OSList[i]
 
 		if proxy.exists(OS[1]) then
-			status("Booting from " .. (proxy.getLabel() or proxy.address))
+			status("Starting from " .. (proxy.getLabel() or proxy.address))
 
 			-- Updating current EEPROM boot address if it's differs from given proxy address
 			if eepromGetData() ~= proxy.address then
@@ -330,7 +330,7 @@ function(url)
 		""
 
 	if connection then
-		status("Downloading script")
+		status("Downloading MacOS")
 
 		while 1 do
 			result, reason = connection.read(mathHuge)	
@@ -355,7 +355,7 @@ function(url)
 end
 
 bindGPUToScreen()
-status("Hold Alt to show boot options")
+status("Press ALT to Boot settings")
 
 -- Waiting 1 sec for user to press Alt key
 local deadline, eventData = uptime() + 1
